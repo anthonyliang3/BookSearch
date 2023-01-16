@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { searchBooks, addWishlist } from '../redux/actions';
+import { searchBooks, addWishlist, getBooks } from '../redux/actions';
 import { BooksContainer, AllBooksContainer, SearchContainer, MainContainer } from '../StyledComponents';
 import Wishlist from './Wishlist';
 
@@ -11,7 +11,13 @@ const Books = () => {
 
   const renderBooks = () => {
     if (state.loading) {
-      return <h1>Loading...</h1>
+      return (
+        <AllBooksContainer>
+          <BooksContainer>
+            <h1>Loading...</h1>
+          </BooksContainer>
+        </AllBooksContainer>
+      )
     }
     return state.items.items?.map(book => {
       return (
@@ -36,13 +42,19 @@ const Books = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    dispatch(searchBooks(searchValue));
-    setSearchValue(searchValue => '');
+    if (searchValue.length > 0) {
+      dispatch(searchBooks(searchValue));
+      setSearchValue(searchValue => '');
+    }
   }
 
   const onSearchChange = (e) => {
     setSearchValue(searchValue => e.target.value);
   }
+
+  useEffect(() => {
+    dispatch(getBooks());
+  }, [])
 
   return (
     <div>

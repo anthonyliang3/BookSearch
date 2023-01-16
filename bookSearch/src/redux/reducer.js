@@ -43,6 +43,25 @@ const booksReducer = (state = initState, action) => {
         ...state,
         wishlist: tempWishlist2
       }
+    case "GET_BOOKS_REQUEST":
+      return {
+        ...state,
+        loading: true,
+        error: null
+      };
+    case "GET_BOOKS_SUCCESS":
+      return {
+        ...state,
+        loading: false,
+        items: action.payload
+      };
+    case "GET_BOOKS_FAILURE":
+      return {
+        ...state,
+        loading: false,
+        error: action.error,
+        items: []
+      };
     default:
       return state;
   }

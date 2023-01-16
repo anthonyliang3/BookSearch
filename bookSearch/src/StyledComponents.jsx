@@ -15,6 +15,7 @@ const AllBooksContainer = styled.div`
   img {
     width: 150px;
     height: 200px;
+    cursor: pointer;
   }
 `
 const BooksContainer = styled.div`
@@ -66,6 +67,7 @@ const WishlistElementContainer = styled.div`
     color: white;
     width: 75px;
     height: 33px;
+    cursor: pointer;
     &:hover {
       background-color: #ff8a8a;
     }
@@ -75,11 +77,14 @@ const WishlistElementContainer = styled.div`
 const SearchContainer = styled.div`
   display: block;
   position: relative;
-  width: 1470px;
+  width: 1435px;
   align-items: center;
   text-align: center;
   justify-content: center;
-  margin-bottom: 15px;
+  margin-bottom: 1px;
+  background-color: #e3f6ff;
+  padding: 15px;
+  left: 0.3%;
   input {
     width: 400px;
     height: 28px;
@@ -92,12 +97,14 @@ const SearchContainer = styled.div`
     border-radius: 5px;
     padding: 5px;
     margin: 2px;
-    background-color: #388087;
+    background-color: #8dcbe6;
     color: white;
     width: 75px;
     height: 37px;
+    cursor: pointer;
     &:hover {
-      background-color: #ee6b6e;
+      background-color: #9df1df;
+      color: grey;
     }
   }
   h1 {

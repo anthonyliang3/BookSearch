@@ -15,6 +15,20 @@ export const searchBooks = (title) => {
   }
 }
 
+export const getBooks = () => {
+  return async (dispatch, getState) => {
+    dispatch({type: "GET_BOOKS_REQUEST"})
+    try {
+      const response = await Axios.get(
+        `https://www.googleapis.com/books/v1/volumes?q=bookname&startIndex=0&maxResults=20`
+      )
+      dispatch({type: "GET_BOOKS_SUCCESS", payload: response.data})
+    } catch(error) {
+      dispatch({type:"GET_BOOKS_FAILURE", error: error})
+    }
+  }
+}
+
 export const addWishlist = (id) => {
   return {
     type: 'ADD_WISHLIST',
