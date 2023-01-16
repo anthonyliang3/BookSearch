@@ -9,6 +9,7 @@ const AllBooksContainer = styled.div`
   margin: 5px;
   background-color: #f6f6f2;
   color: #565656;
+  width: 1000px;
   h3 {
     color: #388087;
   }
